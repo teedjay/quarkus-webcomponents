@@ -2,35 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <title>{name}</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script type="module" src="my-elements.js"></script>
 </head>
 <body>
-<h1>{name} want to test</h1>
 
-<ol>
-    <li>WebComponent native</li>
-    <li>WebComponent using lit-html</li>
-    <li>WebComponent by lit-element</li>
-</ol>
+<h1>WebComponens by '{name}'</h1>
 
-<wc-native>
-    Application Scope : {inject:scopeApplication.debug}
-</wc-native>
+<div class="container">
+    <div class="alert alert-primary">
+        <h2>Scopes</h2>
+        Application : {inject:scopeApplication.debug}<br/>
+        Session : {inject:scopeSession.debug}<br/>
+        Request : {inject:scopeRequest.debug}<br/>
+    </div>
+</div>
 
-<hr/>
+<div class="container">
+    <div class="alert alert-success">
+        <wc-native>native web component no extras</wc-native>
+    </div>
+</div>
 
-<wc-lit>
-    Session Scope : {inject:scopeSession.debug}
-</wc-lit>
+<div class="container">
+    <div class="alert alert-warning">
+        <wc-lit>web component using lit element for rendering</wc-lit>
+    </div>
+</div>
 
-<hr/>
-
-<wc-element>
-    Request Scope : {inject:scopeRequest.debug}
-</wc-element>
+<div class="container">
+    <div class="alert alert-danger">
+        <wc-element prop1="hello world from qute template"></wc-element>
+    </div>
+</div>
 
 </body>
 </html>
